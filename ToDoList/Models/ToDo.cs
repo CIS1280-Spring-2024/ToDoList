@@ -13,5 +13,10 @@ namespace ToDoList.Models
         public string Description { get; set; } = "";
         public DateTime Created { get; set; } = DateTime.Now;
         public bool Completed { get; set; } = false;
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }
