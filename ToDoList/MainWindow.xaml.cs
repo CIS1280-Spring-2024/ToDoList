@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.Models;
 using ToDoList.Repos;
 
 namespace ToDoList
@@ -18,11 +19,14 @@ namespace ToDoList
     public partial class MainWindow : Window
     {
         private ToDoRepo _repo;
+        private List<ToDo> _toDos;
 
         public MainWindow()
         {
             InitializeComponent();
             _repo = new ToDoRepo();
+            _toDos = _repo.GetToDos();
+            lbToDos.ItemsSource = _toDos;
         }
     }
 }
