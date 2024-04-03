@@ -56,6 +56,24 @@ namespace ToDoList.Repos
             return todo.Id;
         }
 
+        public void UpdateToDo(ToDo todo)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand cmd = new SqlCommand($"Update Todo " +
+                                                $"SET Title = @Title," +
+                                                $"SET Description = @Description," +
+                                                $"SET Created = @Created," +
+                                                $"SET Completed = @Completed " +                                $"WHERE ID = @ID; ", conn);
+                cmd.Parameters.AddWithValue("@Title", todo.Title);
+                cmd.Parameters.AddWithValue("@Description", todo.Description);
+                cmd.Parameters.AddWithValue("@Created", todo.Created);
+                cmd.Parameters.AddWithValue("@Completed", todo.Completed);
+                cmd.Parameters.AddWithValue("@ID", todo.Id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+        }
+
 
         //public void UpdateAssignment(Assignment assignment)
         //{
