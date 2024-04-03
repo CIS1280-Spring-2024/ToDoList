@@ -57,9 +57,9 @@ namespace ToDoList.Repos
             {
                 SqlCommand cmd = new SqlCommand($"Update Todo " +
                                                 $"SET Title = @Title," +
-                                                $"SET Description = @Description," +
-                                                $"SET Created = @Created," +
-                                                $"SET Completed = @Completed " + $"WHERE ID = @ID; ", conn);
+                                                $"Description = @Description," +
+                                                $"Created = @Created," +
+                                                $"Completed = @Completed " + $"WHERE ID = @ID; ", conn);
                 cmd.Parameters.AddWithValue("@Title", todo.Title);
                 cmd.Parameters.AddWithValue("@Description", todo.Description);
                 cmd.Parameters.AddWithValue("@Created", todo.Created);

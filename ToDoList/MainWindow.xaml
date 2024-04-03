@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="lbToDos" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,662,10"/>
+        <ListBox x:Name="lbToDos" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,662,10" MouseDoubleClick="lbToDos_MouseDoubleClick"/>
         <Label Content="Title" HorizontalAlignment="Left" Margin="188,72,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txbTitle" HorizontalAlignment="Left" Margin="274,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="318" TabIndex="1"/>
         <Label Content="Description" HorizontalAlignment="Left" Margin="188,103,0,0" VerticalAlignment="Top"/>
@@ -16,8 +16,8 @@
         <Label Content="Date Created" HorizontalAlignment="Left" Margin="188,196,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txbDesciption" HorizontalAlignment="Left" Margin="274,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Height="84" AcceptsReturn="True" TabIndex="2"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="327,278,0,0" VerticalAlignment="Top" Click="btnAdd_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="451,278,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="451,278,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
 
     </Grid>
 </Window>
