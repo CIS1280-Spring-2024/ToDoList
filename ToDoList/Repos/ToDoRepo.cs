@@ -41,18 +41,21 @@ namespace ToDoList.Repos
             return toDos;
         }
 
-        //public void AddAssignment(Assignment assignment)
-        //{
-        //    using (SqlConnection conn = new SqlConnection(connStr))
-        //    {
-        //        SqlCommand cmd = new SqlCommand($"INSERT INTO Assignment (Title, Score, StudentId) VALUES (@Title, @Score, @StudentId);", conn);
-        //        cmd.Parameters.AddWithValue("@Title", assignment.Title);
-        //        cmd.Parameters.AddWithValue("@Score", assignment.Score);
-        //        cmd.Parameters.AddWithValue("@StudentId", assignment.StudentId);
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //}
+        public int AddToDo(ToDo todo)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand cmd = new SqlCommand($"INSERT INTO Assignment (Title, Description, Created, Completed) VALUES (@Title, @Description, @Created, @Completed); SELECT CAST(scope_identity() AS int);", conn);
+                cmd.Parameters.AddWithValue("@Title", todo.Title);
+                cmd.Parameters.AddWithValue("@Description", todo.Description);
+                cmd.Parameters.AddWithValue("@Created", todo.Created);
+                cmd.Parameters.AddWithValue("@Completed", todo.Completed);
+                conn.Open();
+                todo.Id = (int) cmd.ExecuteScalar();
+            }
+            return todo.Id;
+        }
+
 
         //public void UpdateAssignment(Assignment assignment)
         //{
