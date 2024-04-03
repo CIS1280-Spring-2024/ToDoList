@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.Repos;
 
 namespace ToDoList
 {
@@ -16,9 +17,12 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ToDoRepo _repo;
+
         public MainWindow()
         {
             InitializeComponent();
+            _repo = new ToDoRepo();
         }
     }
 }
