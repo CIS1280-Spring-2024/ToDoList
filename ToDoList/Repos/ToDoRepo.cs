@@ -64,7 +64,7 @@ namespace ToDoList.Repos
                                                 $"SET Title = @Title," +
                                                 $"SET Description = @Description," +
                                                 $"SET Created = @Created," +
-                                                $"SET Completed = @Completed " +                                $"WHERE ID = @ID; ", conn);
+                                                $"SET Completed = @Completed " + $"WHERE ID = @ID; ", conn);
                 cmd.Parameters.AddWithValue("@Title", todo.Title);
                 cmd.Parameters.AddWithValue("@Description", todo.Description);
                 cmd.Parameters.AddWithValue("@Created", todo.Created);
@@ -72,35 +72,18 @@ namespace ToDoList.Repos
                 cmd.Parameters.AddWithValue("@ID", todo.Id);
                 conn.Open();
                 cmd.ExecuteNonQuery();
+            }
         }
 
-
-        //public void UpdateAssignment(Assignment assignment)
-        //{
-        //    using (SqlConnection conn = new SqlConnection(connStr))
-        //    {
-        //        SqlCommand cmd = new SqlCommand($"UPDATE Course " +
-        //                                        $"SET Title = @Title," +
-        //                                        $"SET Score = @Score," +
-        //                                        $"SET StudentId = @StudentId " + $"WHERE ID = @ID; ", conn);
-        //        cmd.Parameters.AddWithValue("@Name", assignment.Title);
-        //        cmd.Parameters.AddWithValue("@Score", assignment.Score);
-        //        cmd.Parameters.AddWithValue("@StudentId", assignment.StudentId);
-        //        cmd.Parameters.AddWithValue("@ID", assignment.Id);
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //}
-
-        //public void DeleteAssignment(int assignmentId)
-        //{
-        //    using (SqlConnection conn = new SqlConnection(connStr))
-        //    {
-        //        SqlCommand cmd = new SqlCommand($"DELETE FROM Assignment WHERE ID = @ID;", conn);
-        //        cmd.Parameters.AddWithValue("@ID", assignmentId);
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //}
+        public void DeleteToDo(int todoId)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand cmd = new SqlCommand($"DELETE FROM ToDo WHERE ID = @ID;", conn);
+                cmd.Parameters.AddWithValue("@ID", todoId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
