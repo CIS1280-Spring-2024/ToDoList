@@ -40,7 +40,7 @@ namespace ToDoList.Repos
         {
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                SqlCommand cmd = new SqlCommand($"INSERT INTO Assignment (Title, Description, Created, Completed) VALUES (@Title, @Description, @Created, @Completed); SELECT CAST(scope_identity() AS int);", conn);
+                SqlCommand cmd = new SqlCommand($"INSERT INTO ToDo (Title, Description, Created, Completed) VALUES (@Title, @Description, @Created, @Completed); SELECT CAST(scope_identity() AS int);", conn);
                 cmd.Parameters.AddWithValue("@Title", todo.Title);
                 cmd.Parameters.AddWithValue("@Description", todo.Description);
                 cmd.Parameters.AddWithValue("@Created", todo.Created);
